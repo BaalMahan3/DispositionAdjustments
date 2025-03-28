@@ -57,14 +57,20 @@
     
     <script>
         function submitScoreCard() {
-            const interest = document.getElementById('interest').checked ? 'Yes' : 'No';
+            const interestChecked = document.getElementById('interest').checked;
             const eligible = document.getElementById('eligible').value;
-            const transferred = document.getElementById('transferred').checked ? 'Yes' : 'No';
+            const transferredChecked = document.getElementById('transferred').checked;
             const recruiter = document.getElementById('recruiter').value;
             
             const recruiterStatus = (recruiter === "Yes") ? "Answered" : "Unanswered";
             
-            document.getElementById('result').innerText = `Interest: ${interest}\nEligible: ${eligible}\nTransferred: ${transferred}\nRecruiter Present: ${recruiter} (${recruiterStatus})`;
+            let resultText = "";
+            if (interestChecked) resultText += "Interest\n";
+            resultText += `Eligible: ${eligible}\n`;
+            if (transferredChecked) resultText += "Transferred\n";
+            resultText += `Recruiter Present: ${recruiterStatus}`;
+            
+            document.getElementById('result').innerText = resultText;
         }
     </script>
 </body>
