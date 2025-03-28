@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Card</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .score-card { border: 1px solid #ccc; padding: 20px; width: 300px; }
+        .question { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="score-card">
+        <h2>Score Card</h2>
+        
+        <div class="question">
+            <label>
+                <input type="checkbox" id="interest"> Interest
+            </label>
+        </div>
+        
+        <div class="question">
+            <label for="eligible">Eligible:</label>
+            <select id="eligible">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No - Criminal Record">No - Criminal Record</option>
+                <option value="No - Driving Record">No - Driving Record</option>
+            </select>
+        </div>
+        
+        <div class="question">
+            <label>
+                <input type="checkbox" id="transferred"> Transferred
+            </label>
+        </div>
+        
+        <button onclick="submitScoreCard()">Submit</button>
+        
+        <h3>Results:</h3>
+        <p id="result"></p>
+    </div>
+    
+    <script>
+        function submitScoreCard() {
+            const interest = document.getElementById('interest').checked ? 'Yes' : 'No';
+            const eligible = document.getElementById('eligible').value;
+            const transferred = document.getElementById('transferred').checked ? 'Yes' : 'No';
+            
+            document.getElementById('result').innerText = `Interest: ${interest}\nEligible: ${eligible}\nTransferred: ${transferred}`;
+        }
+    </script>
+</body>
+</html>
